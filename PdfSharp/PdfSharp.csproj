@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <OutputType>Library</OutputType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>TRACE;DEBUG;CORE;CORE_WITH_GDI</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>TRACE;CORE;CORE_WITH_GDI</DefineConstants>
+    <DocumentationFile>bin\Release\PdfSharp.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Messages.de.restext">
+      <Generator>ResGen</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages.restext" />
+    <None Remove="Fonts\ArialUnicodeMs.ttf" />
+    <EmbeddedResource Include="Fonts\ArialUnicodeMs.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SharpZipLib\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Drawing.BarCodes\DataMatrixImage.opensource.cs" />
+    <Compile Remove="Forms\ColorComboBox.cs" />
+    <Compile Remove="Forms\DeviceInfos.cs" />
+    <Compile Remove="Forms\enums\RenderMode.cs" />
+    <Compile Remove="Forms\enums\Zoom.cs" />
+    <Compile Remove="Forms\PagePreview.cs" />
+    <Compile Remove="Forms\PagePreviewCanvas.cs" />
+    <Compile Remove="SilverlightInternals\AgDrawingContext.cs" />
+    <Compile Remove="SilverlightInternals\AgExtensions.cs" />
+    <Compile Remove="SilverlightInternals\AgHacks.cs" />
+    <Compile Remove="SilverlightInternals\Pen.cs" />
+    <Compile Remove="SilverlightInternals\WpHacks.cs" />
+    <Compile Remove="Silverlight\SilverlightHelper.cs" />
+    <Compile Remove="Windows\enums\RenderMode.cs" />
+    <Compile Remove="Windows\enums\Zoom.cs" />
+    <Compile Remove="Windows\PagePreview-ag.xaml.cs" />
+    <Compile Remove="Windows\PagePreview-wpf.xaml.cs" />
+    <Compile Remove="Windows\PagePreviewDesignTimeData.cs" />
+    <Compile Remove="Windows\VisualPresenter.cs" />
+    <EmbeddedResource Remove="Forms\PagePreview.resx" />
+    <EmbeddedResource Remove="Forms\PagePreviewCanvas.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+</Project>

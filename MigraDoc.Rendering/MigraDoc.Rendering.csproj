@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MigraDoc</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>TRACE;DEBUG;CORE;CORE_WITH_GDI</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>TRACE;CORE;CORE_WITH_GDI</DefineConstants>
+    <DocumentationFile>bin\Release\MigraDoc.Rendering.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PdfSharp.Charting\PdfSharp.Charting.csproj" />
+    <ProjectReference Include="..\PdfSharp\PdfSharp.csproj" />
+    <ProjectReference Include="..\MigraDoc.DocumentObjectModel\MigraDoc.DocumentObjectModel.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Rendering.Resources\Messages.de.restext" />
+    <EmbeddedResource Include="Rendering.Resources\Messages.restext" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Rendering.Resources\Messages2.de.resx">
+      <DependentUpon>Messages2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Rendering.Resources\Messages2.resx">
+      <DependentUpon>Messages2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Rendering.Forms\DocumentPreviewWpf.cs" />
+    <Compile Remove="Rendering.Printing\MigraDocPrintDocument.cs" />
+    <Compile Remove="Rendering.Windows\DocumentPreview.xaml.cs" />
+    <Compile Remove="Rendering.Windows\enums\Zoom.cs" />
+    <EmbeddedResource Remove="Rendering.Forms\DocumentPreviewWpf.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+</Project>
